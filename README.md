@@ -42,9 +42,11 @@ Let's quickly make a repository that we can use as a sandbox to experiment with 
 
 From our home directory we're going to make a new directory for our mission-critical-application.
 
+**Note: In documentation for terminal commands you will often see a dollar sign ($) before each command– this is NOT part of the code. Its purpose is to show which commands you, the user, will input.**
+
 ```
-mkdir mission-critical-application
-cd mission-critical-applicatiogit init
+$ mkdir mission-critical-application
+$ cd mission-critical-applicatiogit init
 $ touch application.rb
 $ git add application.rb
 $ git commit -m "First working version of application.rb"
@@ -128,6 +130,8 @@ nothing to commit, working directory clean
 
 We started on `master` and then checked out our `new-feature` branch with `git checkout new-feature`, thereby moving into that timeline.
 
+**Note: You can create and checkout a new branch in one command using: `git checkout -b new-branch-name`. That will both create the branch `new-branch-name` and move into it by checking it out.**
+
 Let's make a commit in this `new-feature` and get the feature started by making a new file, `new-feature-file` to represent the code for the new feature.
 
 ```
@@ -142,8 +146,6 @@ $ git commit -m "Started new feature"
 You can see the commit we made was made in the context of the `new-feature` branch.
 
 Right as we got started on that feature though, we get another bug report and have to move back into master to fix the bug and then deploy master. How do we move from `new-feature` branch back to `master`? What will our code look like when we move back to `master`, will we see the remnants of the `new-feature` branch and code represented by the `new-feature-file`?
-
-**Protip: You can create and checkout a new branch in one command using: `git checkout -b new-branch-name`. That will both create the branch `new-branch-name` and move into it by checking it out.**
 
 #### Moving back to `master` with `git checkout master`
 
