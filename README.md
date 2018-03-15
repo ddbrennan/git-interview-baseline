@@ -257,9 +257,9 @@ Now the branches have been merged and if you use the `ls` command, you'll see th
 
 ## Working with remote branches with `git fetch` and `git pull`
 
-Your local branches can attach to remote branches that live on the internet, generally on GitHub, that your team members might contribute to and you can download locally.
+Your local branches can be connected to remote repositories, most commonly found on GitHub. These remote repositories allow teams of programmers to contribute to a project and download others updates.
 
-Whenever you want to update your local copy with all the branches that might have been added to the GitHub remote, you can type `git fetch`.
+Whenever you want to update your local repository with all the branches been added to the GitHub remote, you can type `git fetch`. This can be executed from any branch, but here we will do it from master:
 
 ```
 $ git fetch
@@ -272,7 +272,7 @@ From github.com:aviflombaum/mission-critical-application
  * [new branch]      remote-feature-branch -> origin/remote-feature-branch
 ```
 
-From within `master` (though technically what branch I was in when I typed `git fetch` does not matter), I executed `git fetch`. The last 3 lines of output are really important, let's take a closer look:
+The last 3 lines of output are really important, let's take a closer look:
 
 ```
 From github.com:aviflombaum/mission-critical-application
@@ -282,13 +282,13 @@ From github.com:aviflombaum/mission-critical-application
 
 The first line, `From github.com:aviflombaum/mission-critical-application` is informing us which remote our `git fetch` updated from, namely, the remote repository located at: https://github.com/aviflombaum/mission-critical-application
 
-When we `fetch` with git, we are asking to copy all changes on the remote to our local git repository, but not actually integrate any. The next line, `bfe50fc..0ae1da2  master     -> origin/master` is telling us that a new commit was found in `origin/master`. `origin/master` means the GitHub version of `master`. Even though git fetched a new commit from `origin/master`, it did not merge it into the local master.
+When we `fetch` with git, we are asking to copy all changes on the remote to our local git repository, but not merge. The next line, `bfe50fc..0ae1da2  master     -> origin/master` is telling us that a new commit was found in `origin/master`. `origin/master` is the GitHub version of `master`. So, even though git fetched a new commit from `origin/master`, it did not merge it into the local master.
 
 ![Fetch without integration](https://dl.dropboxusercontent.com/s/iy2jovft8ykrxbd/2015-11-02%20at%202.08%20PM.png)
 
 Our remote copy on GitHub has a file, `remote-bug-fix`, presumably some code that another developer pushed up to our remote version of the `master` branch to fix a bug. Even after we fetched, our local copy still doesn't appear to have that file.
 
-After you fetch, you have access to the remote code but you still have to merge it. How do you merge a change fetched from `origin/master` into your current master? From within your local master branch, type: `git merge origin/master`, referring to the branch's full path, `remote/branch`, or `origin/master`.
+We still have access to the remote code but you have to merge it ourselves. While within your local master branch, type: `git merge origin/master`, referring to the branch's full path, `remote/branch`, or `origin/master`.
 
 ```
 $ git merge origin/master
@@ -304,7 +304,7 @@ $ ls
 
 The commits fetched via `git fetch` are now merged from the `origin/master` branch into our local `master` branch. And now `ls` reveals that the file present on the remote, `remote-bug-fix` is integrated into our local copy of `master` as well.
 
-When we fetched, git also outputted: `* [new branch]      remote-feature-branch -> origin/remote-feature-branch`. Similarly, git fetched a new branch and if we want to check it out or merge it we can using `git checkout` or `git merge`. Let's checkout what code is on `remote-feature-branch`, a branch another developer made for another feature and pushed up to GitHub so they can share it with us.
+When we fetched, git also output: `* [new branch]      remote-feature-branch -> origin/remote-feature-branch`. Similarly, git fetched a new branch and if we want to check it out or merge it we can, using `git checkout` or `git merge`. Let's checkout what code is on `remote-feature-branch`, a branch another developer made for another feature and pushed up to GitHub:
 
 ```
 $ git checkout remote-feature-branch
@@ -312,11 +312,11 @@ Branch remote-feature-branch set up to track remote branch remote-feature-branch
 Switched to a new branch 'remote-feature-branch'
 ```
 
-When we checkout a remote branch fetched, git will create a local branch to track that remote and switch to that branch. We can now do work, push it back up to GitHub, and another developer can fetch those changes down.
-
-`git fetch` is a pretty low-level git command we don't use that much because it always requires two steps, first `git fetch` and then `git merge` to actually integrate those changes into your working branch. Generally, if you are in `master` you want to immediately `fetch` and `merge` any changes to the remote master.
+When we checkout a remote branch, git will create a local branch to track that remote and switch to that branch. We can now do work, push it back up to GitHub, and another developer can fetch those changes down.
 
 ### Combining `git fetch` with `git merge` by using `git pull`
+
+`git fetch` is a pretty low-level git command we don't use that much because it always requires two steps, first `git fetch` and then `git merge` to actually integrate those changes into your working branch. Generally, if you are in `master` you want to immediately `fetch` and `merge` any changes to the remote master.
 
 If you want to both fetch and merge, which is what you want to do 99% of the time, just type `git pull`. `git pull` is literally the combination of both `git fetch` and `git merge`.
 
