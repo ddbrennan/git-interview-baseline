@@ -233,16 +233,16 @@ Our goal is to bring the timeline of commits that occurred on the `video-chat` b
 
 ![Merged Timeline](https://dl.dropboxusercontent.com/s/bf0cktf3ag549z2/2015-11-02%20at%201.15%20PM.png)
 
-By merging the timelines, `master` will have all of the commits from the `video-chat` branch as though those events occured on the `master` timeline.
+By merging the timelines, `master` will have all of the commits from the `video-chat` branch as though those events occurred on `master`.
 
-When we merge a branch with `git merge`, it's important to be currently working on your target branch, the branch you want to move into. The first step for our `video-chat` merge is to checkout `master` because that is where we want the commits to end up.
+When we merge a branch with `git merge`, it's important to be one the branch where you would like all of the commits to be consolidated. The first step for our `video-chat` merge is to checkout `master`:
 
 ```
 $ git checkout master
 Switched to branch 'master'
 ```
 
-Once on your target branch, type: `git merge <branch name>` where `<branch name>` is the branch we want to merge. In this case, `git merge video-chat` will do the trick.
+Now type: `git merge <branch name>` where `<branch name>` is the branch we want to merge into the current branch. In this case, `git merge video-chat` will do the trick:
 
 ```
 $ git merge video-chat
@@ -253,7 +253,7 @@ Fast-forward
  create mode 100644 video-chat
 ```
 
-Now the branches have been merged and if you `ls`, you'll see the `video-chat` file from the `video-chat` branch in your current working directory that is checked out to master.
+Now the branches have been merged and if you use the `ls` command, you'll see the `video-chat` file from the `video-chat` branch in your current working directory that is on the `master` branch.
 
 ## Working with remote branches with `git fetch` and `git pull`
 
