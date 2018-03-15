@@ -13,9 +13,9 @@
 
 ## Overview
 
-A key to collaborating with git is to keep discrete and individual lines of work isolated from each other. Consider the following scenario.
+A key to collaborating with git is to keep work on individual features for a project separate from the rest of the project. Consider the following scenario:
 
-You start work on a big feature, making a few commits that don't entirely finish the feature. Your git log might look like:
+You start work on a big feature, making a few commits that don't entirely finish the feature. Your git log (a list of all commits on the repository – accessed with `git log` on the command line) might look like this:
 
 ```
 512bec5 Still broken, working on new-feature (aviflombaum, 2 hours ago)
@@ -23,9 +23,11 @@ You start work on a big feature, making a few commits that don't entirely finish
 fbee832 Started new-feature (aviflombaum, 2 days ago)
 ```
 
-Two days ago we started working on our new-feature. Yesterday we were almost done. Today we made progress, but it's still broken. In our current state, if we had to push the repository live and deploy the latest version of our code to production, our users would see a half-finished, currently broken new-feature. That's no good.
+Two days ago we started working on our new-feature. Yesterday we were almost done. Today we made progress, but it's still broken. In our current state, if we had to deploy the latest version of our code to production, our users would see a half-finished, currently broken version of 'new-feature'. That's no good.
 
-But no big deal, right? We can just wait until we're done with new-feature to deploy our code and push the repository live to our users. Here's what happens though. We notice a big bug that is currently breaking the application for all users. The bug is an easy fix, one simple change and deploy of your code can make everything work again. Unfortunately, even if you made that commit, you can't currently deploy it because while that commit might fix the bug, you'd still be pushing your half-finished and broken new-feature.
+But no big deal, right? We can just wait until we're done with 'new-feature' to deploy our code. Here's what could happen, though: a big bug appears that is breaking the application for all users. It's an easy fix– one simple change to our code can make everything work again.
+
+Unfortunately, once we've fixed the bug and committed our code, we have a problem. Let's take a look at the git log:
 
 ```
 r4212d1 Fix to application breaking bug (aviflombaum, just now)
@@ -34,7 +36,9 @@ r4212d1 Fix to application breaking bug (aviflombaum, just now)
 fbee832 Started new-feature (aviflombaum, 2 days ago)
 ```
 
-See, we can't push all those commits. Wouldn't it have been great if we simply isolated our work on new-feature into its own copy of our code so that until it's done, we could have deployed the commit that fixes the application? We can do exactly this using a feature in git called branches.
+See, we can't push our bug fix, because that would push all those commits– including our broken feature!
+
+Wouldn't it have been great if we could have isolated our work on 'new-feature' into its own copy of our code? That way, until it's done we could have deployed our bug fix completely independently. Thankfully, We can do exactly this using a feature in git called branches.
 
 ## Making a branch with `git branch`
 
