@@ -80,11 +80,11 @@ Right now our git log could be visualized as a timeline composed of two commits:
 
 ### About `master` branch.
 
-Notice that these commits are occurring in a linear sequence of events, almost like a timeline? We call this timeline a branch. Whenever you are working on commits in git, you are adding them on a timeline of code called a branch. The branch you are on by default at the start of any repository, your main timeline, the main branch is called master.
+Notice that these commits are occurring in a linear sequence of events, almost like a timeline? We call this timeline a branch. Whenever you are working on commits in git, you are adding them to a branch. The default branch when you start any repository is called master.
 
 ![Master Branch](https://dl.dropboxusercontent.com/s/v75as2cf6xr8n8a/2015-11-02%20at%2011.17%20AM.png)
 
-`git status` will always tell you what branch you are on.
+`git status` will always tell you what branch you are on:
 
 ```
 $ git status
@@ -92,7 +92,7 @@ On branch master
 nothing to commit, working directory clean
 ```
 
-The `master` git branch is our default branch. One of the responsible ways to use git is to make sure that the `master` branch is always clean with working code so that if we ever need to add a bug fix, we can do it and deploy a new version of the application immediately. We don't put broken code in master so that we can always deploy master.
+One of the responsible ways to use git is to make sure that the `master` branch doesn't contain any broken code. That way if we ever need to add a bug fix it can be implemented and deployed immediately. Master should always have working code– often referred to as being 'clean'– so that it can always be deployed.
 
 ### Starting a new feature with `git branch new-feature`
 
