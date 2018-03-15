@@ -96,16 +96,16 @@ One of the responsible ways to use git is to make sure that the `master` branch 
 
 ### Starting a new feature with `git branch new-feature`
 
-To keep master clean, when we want to start a new feature, we should do it in an isolated feature branch. Our timeline will look as follows:
+To keep master clean, when start a new feature we should do it in an isolated feature branch. Our timeline will look as follows:
 
 ![Feature Branch](https://dl.dropboxusercontent.com/s/d61r0fxyriaf5oj/2015-11-02%20at%2011.52%20AM.png)
 
-After commit 2, we will branch out of master and create a new timeline for commits and events specifically related to the new feature. The master timeline remains unchanged and clean. Now that we've covered the idea of the new-feature branch, let's actually make it.
+After commit 2, we will branch out of master and create a new timeline for commits specifically related to the new feature. The master timeline remains unchanged and clean. Now that we've covered the idea of the new-feature branch, let's actually make it.
 
-To make a new branch simply type: `git branch <branch name>`. In the case of a branch relating to a new feature, we'd name the branch `new-feature` like so:
+To make a new branch simply type: `git branch <branch name>`. Let's pretend we were going to add a video chat functionality to our program. We'd name the branch `video-chat` like so:
 
 ```
-$ git branch new-feature
+$ git branch video-chat
 ```
 
 To see a list of our branches we can type: `git branch -a`
@@ -113,59 +113,59 @@ To see a list of our branches we can type: `git branch -a`
 ```
 $ git branch -a
 * master
-  new-feature
+  video-chat
 ```
 
-The `*` in front of the branch `master` indicates that `master` is currently our working branch and git tells us that we also have a branch called `new-feature`. If we made a commit right now, that commit would still be applied to our `master` branch.
+The `*` in front of the branch `master` indicates that `master` is currently our working branch and git tells us that we also have a branch called `video-chat`. If we made a commit right now, that commit would still be applied to our `master` branch.
 
 ### Switching branches with `git checkout`
 
-We need to checkout or move into our `new-feature` timeline or branch so that git knows that all commits made apply to only that unit of work, timeline, or branch. We can move between branches with `git checkout <branch name>`.
+We need to checkout or move into our `video-chat` timeline or branch so that git knows that all commits made apply to only that unit of work, timeline, or branch. We can move between branches with `git checkout <branch name>`.
 
 ```
 $ git status
 On branch master
 nothing to commit, working directory clean
-$ git checkout new-feature
-Switched to branch 'new-feature'
+$ git checkout video-chat
+Switched to branch 'video-chat'
 $ git status
-On branch new-feature
+On branch video-chat
 nothing to commit, working directory clean
 ```
 
-We started on `master` and then checked out our `new-feature` branch with `git checkout new-feature`, thereby moving into that timeline.
+We started on `master` and then checked out our `video-chat` branch with `git checkout video-chat`, thereby moving into that timeline.
 
 **Note: You can create and checkout a new branch in one command using: `git checkout -b new-branch-name`. That will both create the branch `new-branch-name` and move into it by checking it out.**
 
-Let's make a commit in this `new-feature` and get the feature started by making a new file, `new-feature-file` to represent the code for the new feature.
+Let's make a commit in this `video-chat` and get the feature started by making a new file, `video-chat-file` to represent the code for the new feature.
 
 ```
-$ touch new-feature-file
-$ git add new-feature-file
+$ touch video-chat-file
+$ git add video-chat-file
 $ git commit -m "Started new feature"
-[new-feature 332a618] Started new feature
+[video-chat 332a618] Started new feature
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 new-feature-file
+ create mode 100644 video-chat-file
 ```
 
-You can see the commit we made was made in the context of the `new-feature` branch.
+You can see the commit we made was made in the context of the `video-chat` branch.
 
-Right as we got started on that feature though, we get another bug report and have to move back into master to fix the bug and then deploy master. How do we move from `new-feature` branch back to `master`? What will our code look like when we move back to `master`, will we see the remnants of the `new-feature` branch and code represented by the `new-feature-file`?
+Right as we got started on that feature though, we get another bug report and have to move back into master to fix the bug and then deploy master. How do we move from `video-chat` branch back to `master`? What will our code look like when we move back to `master`, will we see the remnants of the `video-chat` branch and code represented by the `video-chat-file`?
 
 #### Moving back to `master` with `git checkout master`
 
-You can always move between branches with `git checkout`. Since we are currently on `new-feature`, we can move back to master with `git checkout master`.
+You can always move between branches with `git checkout`. Since we are currently on `video-chat`, we can move back to master with `git checkout master`.
 
 ```
 $ git checkout master
 Switched to branch 'master'
 ```
 
-And we could move back to `new-feature` with `git checkout new-feature`
+And we could move back to `video-chat` with `git checkout video-chat`
 
 ```
-$ git checkout new-feature
-Switched to branch 'new-feature'
+$ git checkout video-chat
+Switched to branch 'video-chat'
 ```
 
 And back again with:
@@ -177,14 +177,14 @@ Switched to branch 'master'
 
 ![Switching between branches](https://dl.dropboxusercontent.com/s/qzajqsd9f6njauc/2015-11-02%20at%2012.12%20PM.png)
 
-From master, one thing you'll notice is that the code you wrote on `new-feature`, namely the file, `new-feature-file`, is not present in the current directory.
+From master, one thing you'll notice is that the code you wrote on `video-chat`, namely the file, `video-chat-file`, is not present in the current directory.
 
 ```
 $ ls
 application.rb first-bug-fix.rb
 ```
 
-The master branch only has the code from the most recent commit relative to the master timeline or branch. The code from our `new-feature` is tucked away in that branch, waiting patiently in isolation from the rest of our code in `master` for us to finish the feature.
+The master branch only has the code from the most recent commit relative to the master timeline or branch. The code from our `video-chat` is tucked away in that branch, waiting patiently in isolation from the rest of our code in `master` for us to finish the feature.
 
 Once you're on master you are free to make a commit to fix the bug, which we'll represent with a new file, `second-bug-fix.rb`.
 
@@ -198,62 +198,62 @@ Let's look at our timeline now.
 
 ![Commit on Master](https://dl.dropboxusercontent.com/s/9ipgkog7yv8hrok/2015-11-02%20at%2012.18%20PM.png)
 
-We were able to update the timeline in master with the fix to the bug without touching any of the code in new-feature. `new-feature` branch and timeline remains 1 commit behind master, because the second bug fix commit occured in master and `new-feature` branch was created only with the commits at the moment when the branch was created. You could describe `master` as being 1 commit ahead of the `new-feature` branch.
+We were able to update the timeline in master with the fix to the bug without touching any of the code in video-chat. `video-chat` branch and timeline remains 1 commit behind master, because the second bug fix commit occured in master and `video-chat` branch was created only with the commits at the moment when the branch was created. You could describe `master` as being 1 commit ahead of the `video-chat` branch.
 
-Let's go back into `new-feature` and complete the feature and commit it and then look at the timeline. Remember how to move from `master` back to `new-feature`?
+Let's go back into `video-chat` and complete the feature and commit it and then look at the timeline. Remember how to move from `master` back to `video-chat`?
 
 ```
 $ git status
 On branch master
 nothing to commit, working directory clean
-$ git checkout new-feature
-Switched to branch 'new-feature'
+$ git checkout video-chat
+Switched to branch 'video-chat'
 ```
 
-Let's rename `new-feature-file` to `new-feature` to signify the code we wrote to complete the feature and commit this change. We can rename a file with `mv <original filename> <new filename>` BASH command.
+Let's rename `video-chat-file` to `video-chat` to signify the code we wrote to complete the feature and commit this change. We can rename a file with `mv <original filename> <new filename>` BASH command.
 
 ```
-$ mv new-feature-file new-feature
-$ git add new-feature
+$ mv video-chat-file video-chat
+$ git add video-chat
 $ git commit -m "Finished feature"
-[new-feature bfe50fc] Finished feature
+[video-chat bfe50fc] Finished feature
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 new-feature
+ create mode 100644 video-chat
 ```
 
 Let's look at our timeline now.
 
 ![Completed Feature Branch](https://dl.dropboxusercontent.com/s/xtoehu7tv5zim6v/2015-11-02%20at%2012.31%20PM.png)
 
-The final step of our `new-feature` work sprint is to figure out how to merge that timeline into the master timeline.
+The final step of our `video-chat` work sprint is to figure out how to merge that timeline into the master timeline.
 
 ## Merging branches with `git merge`
 
-Our goal is to bring the timeline of commits that occurred on the `new-feature` branch into the `master` so that at the end of the operation, our `master` timeline looks like:
+Our goal is to bring the timeline of commits that occurred on the `video-chat` branch into the `master` so that at the end of the operation, our `master` timeline looks like:
 
 ![Merged Timeline](https://dl.dropboxusercontent.com/s/bf0cktf3ag549z2/2015-11-02%20at%201.15%20PM.png)
 
-By merging the timelines, `master` will have all of the commits from the `new-feature` branch as though those events occured on the `master` timeline.
+By merging the timelines, `master` will have all of the commits from the `video-chat` branch as though those events occured on the `master` timeline.
 
-When we merge a branch with `git merge`, it's important to be currently working on your target branch, the branch you want to move into. The first step for our `new-feature` merge is to checkout `master` because that is where we want the commits to end up.
+When we merge a branch with `git merge`, it's important to be currently working on your target branch, the branch you want to move into. The first step for our `video-chat` merge is to checkout `master` because that is where we want the commits to end up.
 
 ```
 $ git checkout master
 Switched to branch 'master'
 ```
 
-Once on your target branch, type: `git merge <branch name>` where `<branch name>` is the branch we want to merge. In this case, `git merge new-feature` will do the trick.
+Once on your target branch, type: `git merge <branch name>` where `<branch name>` is the branch we want to merge. In this case, `git merge video-chat` will do the trick.
 
 ```
-$ git merge new-feature
+$ git merge video-chat
 Updating e5830af..bfe50fc
 Fast-forward
- new-feature      | 0
+ video-chat      | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 new-feature
+ create mode 100644 video-chat
 ```
 
-Now the branches have been merged and if you `ls`, you'll see the `new-feature` file from the `new-feature` branch in your current working directory that is checked out to master.
+Now the branches have been merged and if you `ls`, you'll see the `video-chat` file from the `video-chat` branch in your current working directory that is checked out to master.
 
 ## Working with remote branches with `git fetch` and `git pull`
 
