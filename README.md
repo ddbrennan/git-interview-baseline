@@ -316,9 +316,9 @@ When we checkout a remote branch, git will create a local branch to track that r
 
 ### Combining `git fetch` with `git merge` by using `git pull`
 
-`git fetch` is a pretty low-level git command we don't use that much because it always requires two steps, first `git fetch` and then `git merge` to actually integrate those changes into your working branch. Generally, if you are in `master` you want to immediately `fetch` and `merge` any changes to the remote master.
+We generally don't use `git fetch` much because it requires two steps– `git fetch` and `git merge`– to actually integrate those changes into your working branch. Generally, if you are in `master` you want to immediately `fetch` and `merge` any changes to the remote master.
 
-If you want to both fetch and merge, which is what you want to do 99% of the time, just type `git pull`. `git pull` is literally the combination of both `git fetch` and `git merge`.
+To execute both those commands at once, we have the command `git pull`.
 
 When you `git pull` the following things will occur:
 
@@ -327,7 +327,7 @@ When you `git pull` the following things will occur:
 
 ## Conclusion
 
-Git is complex, and collaborating with people in this matter is just hard - there's no easy way to allow 100s of people to all work on the same code base. These workflows are just being introduced to you.  You'll have lots of time to practice them and memorize what each command does. Don't try to learn it all at once; instead just start to get an understanding of what's what.
+Git is complex, and collaborating with people in this matter is hard - there's no easy way to allow hundreds of people to all work on the same code base. These workflows are just being introduced to you and can seem overwhelming, but you'll have lots of time to practice them and memorize what each command does.
 
 ![XKCD Git](http://imgs.xkcd.com/comics/git.png)
 
