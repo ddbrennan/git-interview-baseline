@@ -43,12 +43,11 @@ Let's quickly make a repository that we can use as a sandbox to experiment with 
 From our home directory we're going to make a new directory for our mission-critical-application.
 
 ```
-~ $ mkdir mission-critical-application
-~ $ cd mission-critical-application
-mission-critical-application $ git init
-mission-critical-application $ touch application.rb
-mission-critical-application $ git add application.rb
-mission-critical-application $ git commit -m "First working version of application.rb"
+mkdir mission-critical-application
+cd mission-critical-applicatiogit init
+$ touch application.rb
+$ git add application.rb
+$ git commit -m "First working version of application.rb"
 ```
 
 1. We made a new directory with `mkdir mission-critical-application`.
@@ -63,9 +62,9 @@ mission-critical-application $ git commit -m "First working version of applicati
 With our application online and customers rolling in, we notice a bug and quickly add a fix in the form of a file, `first-bug-fix.rb` (*this is just an example*).
 
 ```
-mission-critical-application $ touch first-bug-fix.rb
-mission-critical-application $ git add first-bug-fix.rb
-mission-critical-application $ git commit -m "First bug fix"
+$ touch first-bug-fix.rb
+$ git add first-bug-fix.rb
+$ git commit -m "First bug fix"
 ```
 
 Right now our git log could be visualized as a timeline composed of two commits.
@@ -81,7 +80,7 @@ Notice that these commits are occurring in a linear sequence of events, almost l
 `git status` will always tell you what branch you are on.
 
 ```
-mission-critical-application $ git status
+$ git status
 On branch master
 nothing to commit, working directory clean
 ```
@@ -99,13 +98,13 @@ After commit 2, we will branch out of master and create a new timeline for commi
 To make a new branch simply type: `git branch <branch name>`. In the case of a branch relating to a new feature, we'd name the branch `new-feature` like so:
 
 ```
-mission-critical-application $ git branch new-feature
+$ git branch new-feature
 ```
 
 To see a list of our branches we can type: `git branch -a`
 
 ```
-mission-critical-application $ git branch -a
+$ git branch -a
 * master
   new-feature
 ```
@@ -117,12 +116,12 @@ The `*` in front of the branch `master` indicates that `master` is currently our
 We need to checkout or move into our `new-feature` timeline or branch so that git knows that all commits made apply to only that unit of work, timeline, or branch. We can move between branches with `git checkout <branch name>`.
 
 ```
-mission-critical-application $ git status
+$ git status
 On branch master
 nothing to commit, working directory clean
-mission-critical-application $ git checkout new-feature
+$ git checkout new-feature
 Switched to branch 'new-feature'
-mission-critical-application $ git status
+$ git status
 On branch new-feature
 nothing to commit, working directory clean
 ```
@@ -132,9 +131,9 @@ We started on `master` and then checked out our `new-feature` branch with `git c
 Let's make a commit in this `new-feature` and get the feature started by making a new file, `new-feature-file` to represent the code for the new feature.
 
 ```
-mission-critical-application $ touch new-feature-file
-mission-critical-application $ git add new-feature-file
-mission-critical-application $ git commit -m "Started new feature"
+$ touch new-feature-file
+$ git add new-feature-file
+$ git commit -m "Started new feature"
 [new-feature 332a618] Started new feature
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 new-feature-file
@@ -151,21 +150,21 @@ Right as we got started on that feature though, we get another bug report and ha
 You can always move between branches with `git checkout`. Since we are currently on `new-feature`, we can move back to master with `git checkout master`.
 
 ```
-mission-critical-application $ git checkout master
+$ git checkout master
 Switched to branch 'master'
 ```
 
 And we could move back to `new-feature` with `git checkout new-feature`
 
 ```
-mission-critical-application $ git checkout new-feature
+$ git checkout new-feature
 Switched to branch 'new-feature'
 ```
 
 And back again with:
 
 ```
-mission-critical-application $ git checkout master
+$ git checkout master
 Switched to branch 'master'
 ```
 
@@ -174,7 +173,7 @@ Switched to branch 'master'
 From master, one thing you'll notice is that the code you wrote on `new-feature`, namely the file, `new-feature-file`, is not present in the current directory.
 
 ```
-mission-critical-application $ ls
+$ ls
 application.rb first-bug-fix.rb
 ```
 
@@ -183,9 +182,9 @@ The master branch only has the code from the most recent commit relative to the 
 Once you're on master you are free to make a commit to fix the bug, which we'll represent with a new file, `second-bug-fix.rb`.
 
 ```
-mission-critical-application $ touch second-bug-fix.rb
-mission-critical-application $ git add second-bug-fix.rb
-mission-critical-application $ git commit -m "Second bug fix"
+$ touch second-bug-fix.rb
+$ git add second-bug-fix.rb
+$ git commit -m "Second bug fix"
 ```
 
 Let's look at our timeline now.
@@ -197,19 +196,19 @@ We were able to update the timeline in master with the fix to the bug without to
 Let's go back into `new-feature` and complete the feature and commit it and then look at the timeline. Remember how to move from `master` back to `new-feature`?
 
 ```
-mission-critical-application $ git status
+$ git status
 On branch master
 nothing to commit, working directory clean
-mission-critical-application $ git checkout new-feature
+$ git checkout new-feature
 Switched to branch 'new-feature'
 ```
 
 Let's rename `new-feature-file` to `new-feature` to signify the code we wrote to complete the feature and commit this change. We can rename a file with `mv <original filename> <new filename>` BASH command.
 
 ```
-mission-critical-application $ mv new-feature-file new-feature
-mission-critical-application $ git add new-feature
-mission-critical-application $ git commit -m "Finished feature"
+$ mv new-feature-file new-feature
+$ git add new-feature
+$ git commit -m "Finished feature"
 [new-feature bfe50fc] Finished feature
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 new-feature
@@ -232,14 +231,14 @@ By merging the timelines, `master` will have all of the commits from the `new-fe
 When we merge a branch with `git merge`, it's important to be currently working on your target branch, the branch you want to move into. The first step for our `new-feature` merge is to checkout `master` because that is where we want the commits to end up.
 
 ```
-mission-critical-application $ git checkout master
+$ git checkout master
 Switched to branch 'master'
 ```
 
 Once on your target branch, type: `git merge <branch name>` where `<branch name>` is the branch we want to merge. In this case, `git merge new-feature` will do the trick.
 
 ```
-mission-critical-application $ git merge new-feature
+$ git merge new-feature
 Updating e5830af..bfe50fc
 Fast-forward
  new-feature      | 0
@@ -256,7 +255,7 @@ Your local branches can attach to remote branches that live on the internet, gen
 Whenever you want to update your local copy with all the branches that might have been added to the GitHub remote, you can type `git fetch`.
 
 ```
-mission-critical-application $ git fetch
+$ git fetch
 remote: Counting objects: 4, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 4 (delta 3), reused 3 (delta 2), pack-reused 0
@@ -285,13 +284,13 @@ Our remote copy on GitHub has a file, `remote-bug-fix`, presumably some code tha
 After you fetch, you have access to the remote code but you still have to merge it. How do you merge a change fetched from `origin/master` into your current master? From within your local master branch, type: `git merge origin/master`, referring to the branch's full path, `remote/branch`, or `origin/master`.
 
 ```
-mission-critical-application $ git merge origin/master
+$ git merge origin/master
 Updating bfe50fc..0ae1da2
 Fast-forward
  remote-bug-fix | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 remote-bug-fix
-mission-critical-application $ ls
+$ ls
  application.rb		new-feature-file    new-feature		
  remote-bug-fix
 ```
@@ -301,7 +300,7 @@ The commits fetched via `git fetch` are now merged from the `origin/master` bran
 When we fetched, git also outputted: `* [new branch]      remote-feature-branch -> origin/remote-feature-branch`. Similarly, git fetched a new branch and if we want to check it out or merge it we can using `git checkout` or `git merge`. Let's checkout what code is on `remote-feature-branch`, a branch another developer made for another feature and pushed up to GitHub so they can share it with us.
 
 ```
-mission-critical-application $ git checkout remote-feature-branch
+$ git checkout remote-feature-branch
 Branch remote-feature-branch set up to track remote branch remote-feature-branch from origin.
 Switched to a new branch 'remote-feature-branch'
 ```
