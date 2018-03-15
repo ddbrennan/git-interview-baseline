@@ -42,7 +42,7 @@ Wouldn't it have been great if we could have isolated our work on 'new-feature' 
 
 ## Making a branch with `git branch`
 
-Let's quickly make a repository that we can use as a sandbox to experiment with the collaborative features of git. You don't have to follow along, you'll be able to understand the concepts from the reading but if you'd like, you can copy and paste these commands locally.
+Let's quickly create a repository that we can use to experiment with the collaborative features of git. You'll be able to understand the concepts from the reading but if you'd like, but if you'd like to follow along you can copy and paste these commands locally in your command line.
 
 From our home directory we're going to make a new directory for our mission-critical-application.
 
@@ -50,7 +50,8 @@ From our home directory we're going to make a new directory for our mission-crit
 
 ```
 $ mkdir mission-critical-application
-$ cd mission-critical-applicatiogit init
+$ cd mission-critical-application
+$ git init
 $ touch application.rb
 $ git add application.rb
 $ git commit -m "First working version of application.rb"
@@ -60,10 +61,10 @@ $ git commit -m "First working version of application.rb"
 2. We moved into that directory with `cd mission-critical-application`.
 3. We turned that directory into a git repository with `git init`.
 4. We created our application `touch application.rb`.
-5. We programmed an entire working first version in `application.rb` (*not reflected in the CLI commands above, but we did, and it was awesome, great job*).
+5. We programmed an entire working first version in `application.rb` (*not reflected in the commands above – our actual file is just blank, but we can pretend it's something amazing*).
 6. We added our `application.rb` to git with `git add application.rb`.
 7. We committed the first working version of our application with `git commit -m "First working version of application.rb"`.
-8. You deploy your application to production and people start using it (*also not reflected in the CLI commands above, but we did, and it too was awesome, great job*).
+8. We deployed our application to production (*this is also not reflected in the commands above*).
 
 With our application online and customers rolling in, we notice a bug and quickly add a fix in the form of a file, `first-bug-fix.rb` (*this is just an example*).
 
@@ -73,7 +74,7 @@ $ git add first-bug-fix.rb
 $ git commit -m "First bug fix"
 ```
 
-Right now our git log could be visualized as a timeline composed of two commits.
+Right now our git log could be visualized as a timeline composed of two commits:
 
 ![First Two Commits](https://dl.dropboxusercontent.com/s/ikorf1qvvp4tay0/2015-11-02%20at%2011.15%20AM.png)
 
