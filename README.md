@@ -120,7 +120,7 @@ The `*` in front of the branch `master` indicates that `master` is currently our
 
 ### Switching branches with `git checkout`
 
-We need to checkout or move into our `video-chat` timeline or branch so that git knows that all commits made apply to only that unit of work, timeline, or branch. We can move between branches with `git checkout <branch name>`.
+We need to switch to our `video-chat` branch so that git knows that all commits made apply to only that branch. We can move between branches with `git checkout <branch name>`.
 
 ```
 $ git status
@@ -137,7 +137,7 @@ We started on `master` and then checked out our `video-chat` branch with `git ch
 
 **Note: You can create and checkout a new branch in one command using: `git checkout -b new-branch-name`. That will both create the branch `new-branch-name` and move into it by checking it out.**
 
-Let's make a commit in this `video-chat` and get the feature started by making a new file, `video-chat-file` to represent the code for the new feature.
+Let's make a commit in this `video-chat` branch and get the feature started by making a new file, `video-chat-file` to represent the code for the new feature.
 
 ```
 $ touch video-chat-file
@@ -150,7 +150,7 @@ $ git commit -m "Started new feature"
 
 You can see the commit we made was made in the context of the `video-chat` branch.
 
-Right as we got started on that feature though, we get another bug report and have to move back into master to fix the bug and then deploy master. How do we move from `video-chat` branch back to `master`? What will our code look like when we move back to `master`, will we see the remnants of the `video-chat` branch and code represented by the `video-chat-file`?
+Imagine that right as we got started on that feature we got another bug report and had to move back into master to fix the bug. How do we move from `video-chat` branch back to `master`? What will our code look like when we move back to `master`– will we see the remnants of the `video-chat` branch and code represented by the `video-chat-file`?
 
 #### Moving back to `master` with `git checkout master`
 
@@ -177,14 +177,14 @@ Switched to branch 'master'
 
 ![Switching between branches](https://dl.dropboxusercontent.com/s/qzajqsd9f6njauc/2015-11-02%20at%2012.12%20PM.png)
 
-From master, one thing you'll notice is that the code you wrote on `video-chat`, namely the file, `video-chat-file`, is not present in the current directory.
+From master, one thing you'll notice is that the code you wrote on `video-chat`, namely the file, `video-chat-file`, is not present in the current directory:
 
 ```
 $ ls
 application.rb first-bug-fix.rb
 ```
 
-The master branch only has the code from the most recent commit relative to the master timeline or branch. The code from our `video-chat` is tucked away in that branch, waiting patiently in isolation from the rest of our code in `master` for us to finish the feature.
+The master branch only has the code from the most recent commit relative to the master branch. The code from our `video-chat` is tucked away in its own branch, completely independent of the code in `master`.
 
 Once you're on master you are free to make a commit to fix the bug, which we'll represent with a new file, `second-bug-fix.rb`.
 
@@ -198,9 +198,9 @@ Let's look at our timeline now.
 
 ![Commit on Master](https://dl.dropboxusercontent.com/s/9ipgkog7yv8hrok/2015-11-02%20at%2012.18%20PM.png)
 
-We were able to update the timeline in master with the fix to the bug without touching any of the code in video-chat. `video-chat` branch and timeline remains 1 commit behind master, because the second bug fix commit occured in master and `video-chat` branch was created only with the commits at the moment when the branch was created. You could describe `master` as being 1 commit ahead of the `video-chat` branch.
+We were able to update the timeline in master with the bug fix without touching any of the code in `video-chat`. The second bug fix commit occurred in master AFTER `video-chat` was created. `video-chat` is only aware of the commits at the moment when the branch was created. You could describe `master` as being one commit ahead of the `video-chat` branch.
 
-Let's go back into `video-chat` and complete the feature and commit it and then look at the timeline. Remember how to move from `master` back to `video-chat`?
+Let's go back into `video-chat` to complete the feature and commit it. Remember how to move from `master` back to `video-chat`?
 
 ```
 $ git status
@@ -210,7 +210,7 @@ $ git checkout video-chat
 Switched to branch 'video-chat'
 ```
 
-Let's rename `video-chat-file` to `video-chat` to signify the code we wrote to complete the feature and commit this change. We can rename a file with `mv <original filename> <new filename>` BASH command.
+Let's rename `video-chat-file` to `video-chat` to mark it as a completed feature and commit this change. We can rename a file with `mv <original filename> <new filename>`.
 
 ```
 $ mv video-chat-file video-chat
@@ -225,7 +225,7 @@ Let's look at our timeline now.
 
 ![Completed Feature Branch](https://dl.dropboxusercontent.com/s/xtoehu7tv5zim6v/2015-11-02%20at%2012.31%20PM.png)
 
-The final step of our `video-chat` work sprint is to figure out how to merge that timeline into the master timeline.
+The final step is to figure out how to merge the `video-chat` branch into the master.
 
 ## Merging branches with `git merge`
 
